@@ -132,5 +132,5 @@ def regenerate_section(request: RegenerateSectionRequest):
 # -------------------------
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 5000))  # Default port 5000 or as defined in environment
+    port = int(os.environ.get("PORT", 10000))  # Default port 5000 or as defined in environment
     uvicorn.run(app, host="127.0.0.1", port=port)
