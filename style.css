@@ -1,0 +1,270 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 915px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    text-align: left;
+    font-size: 24px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tab-button:hover {
+    background: #d0d5dd;
+}
+
+.tab-button.active {
+    background: white;
+    font-weight: bold;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Input and Textarea */
+input, textarea {
+    width: 97%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #0c0f1f;
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #0c0f1f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #1a1f31;
+}
+
+/* Button Click Effect */
+.btn.clicked {
+    opacity: 0.8;
+    transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+/* Previews */
+.preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 17px;
+    line-height: 1.6;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    animation: fadeIn 0.5s ease-out;
+    word-wrap: break-word;
+    /*white-space: pre-wrap; /* This code gives the text a lot of break space */
+    overflow-wrap: break-word;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Blinking Cursor for Live Typing */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Drag-and-Drop */
+.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Resume Sections for Drag-and-Drop */
+.resume-section {
+    padding: 10px;
+    margin: 5px 0;
+    background: #9e9e9e;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: grab;
+    user-select: none;  /* Prevent text selection */
+}
+
+.resume-section:active {
+    cursor: grabbing;
+}
+
+/* Regenerate Button & Dropdown */
+.regenerate-btn {
+    width: 100%;
+    padding: 12px;
+    background: #343434;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.regenerate-btn:hover {
+    background: #0c0f1f;
+    transition: background 0.3s ease;
+}
+
+.regenerateSection {
+    width: 60%;
+    padding: 9px;
+    background: #343434;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 9px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s ease;
+}
+
+.regenerateSection:hover {
+    background: #0c0f1f;
+    transition: background 0.3s ease;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -340px; /* Hidden by default */
+    width: 300px;
+    height: 100vh;
+    background: #0c0f1f;
+    color: white;
+    padding: 20px;
+    transition: left 0.4s ease-in-out;  /* Slide in/out */
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+/* Sidebar Close Button */
+.close-btn {
+    background: #ff4d4d;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: auto;
+    padding: 10px 15px;
+    background: #0c0f1f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    z-index: 1100;
+}
+
+.sidebar-toggle:hover {
+    background: #1a1f31;
+}
+
+.copy-btn {
+    margin-top: 1px;
+    margin-left: 845px;
+    padding: 8px 12px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: right;
+}
+.copy-btn img {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Include marked.js to convert markdown to HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Include SortableJS for drag-and-drop functionality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <!-- External script file for additional JavaScript logic -->
+  <script src="script.js" defer></script>
+  <style>
+    /* Extra animations for tab content and sidebar bounce */
+    .tab-content {
+      animation: contentFadeIn 0.6s ease-out;
+    }
+    @keyframes contentFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Bounce effect for sidebar when it opens */
+    #sidebar.open {
+      animation: sidebarBounce 0.5s ease;
+    }
+    @keyframes sidebarBounce {
+      0% {
+        transform: translateX(-100%);
+      }
+      60% {
+        transform: translateX(10px);
+      }
+      80% {
+        transform: translateX(-5px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-button active" onclick="showTab('resume')">Resume</button>
+      <button class="tab-button" onclick="showTab('cover')">Cover Letter</button>
+    </div>
+
+    <!-- Resume Tab Content -->
+    <div id="resume" class="tab-content active">
+      <h2>Resume Details</h2>
+      <!-- Job Description Analysis -->
+      <textarea id="jobDesc" placeholder="Paste the job description here..."></textarea>
+      <button id="analyzeJob" class="btn">Analyze Job Description</button>
+      <div class="preview" id="jobAnalysisPreview">Job analysis will appear here.</div>
+
+      <!-- Additional Candidate Details -->
+      <textarea id="resumeDetails" placeholder="Describe yourself and your experience and skills..."></textarea>
+      <button id="generateResume" class="btn">Generate Resume</button>
+
+      <!-- Editable Resume Preview -->
+      <div id="resumePreview" class="preview" contenteditable="true">
+        Your generated resume will appear here. Click to edit.
+        <button class="copy-btn" onclick="copyResume()">
+          <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" alt="Copy Icon">
+        </button>
+      </div>
+    </div>
+
+    <!-- Cover Letter Tab Content -->
+    <div id="cover" class="tab-content">
+      <h2>Cover Letter Details</h2>
+      <textarea id="companyDetails" placeholder="Paste the company details here..."></textarea>
+      <textarea id="coverLetterDetails" placeholder="Describe why you're a good fit..."></textarea>
+      <button id="generateCoverLetter" class="btn">Generate Cover Letter</button>
+
+      <!-- Editable Cover Letter Preview -->
+      <div id="coverPreview" class="preview" contenteditable="true">
+        Your generated cover letter will appear here. Click to edit.
+        <button class="copy-btn" onclick="copyCover()">
+          <img src="https://cdn-icons-png.flaticon.com/512/1621/1621635.png" alt="Copy Icon">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Toggle Button (Shown only to paid users) -->
+  <button id="toggleSidebar" class="btn sidebar-toggle">☰ Customize Resume</button>
+
+  <!-- Sidebar Menu (Premium Feature) -->
+  <div id="sidebar">
+    <button id="closeSidebar" class="btn close-btn">Close</button>
+    <!-- Drag-and-Drop Resume Sections -->
+    <h3>Reorder Resume Sections</h3>
+    <div id="resumeSections">
+      <div class="resume-section" id="summary" contenteditable="true">Summary</div>
+      <div class="resume-section" id="experience" contenteditable="true">Work Experience</div>
+      <div class="resume-section" id="education" contenteditable="true">Education</div>
+      <div class="resume-section" id="skills" contenteditable="true">Skills</div>
+    </div>
+    <!-- Section Regeneration -->
+    <h3>Selective Regeneration</h3>
+    <select id="regenerateSection" class="regenerateSection">
+      <option value="summary">Summary</option>
+      <option value="experience">Work Experience</option>
+      <option value="education">Education</option>
+      <option value="skills">Skills</option>
+    </select>
+    <button id="regenerateSectionBtn" class="regenerate-btn">Regenerate Selected Section</button>
+  </div>
+</body>
+</html>
