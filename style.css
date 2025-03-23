@@ -111,12 +111,12 @@ input:focus, textarea:focus {
     background: #f8f9fa;
     border-radius: 5px;
     border: 1px solid #e0e0e0;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.6;
     font-family: 'Helvetica', 'Arial', sans-serif;
     animation: fadeIn 0.5s ease-out;
     word-wrap: break-word;
-    /*white-space: pre-wrap; /* This code gives the text a lot of break space */
+    /*white-space: pre-wrap;      /* Preserves formatting and line breaks */
     overflow-wrap: break-word;
 }
 
